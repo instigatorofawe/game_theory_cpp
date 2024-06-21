@@ -1,6 +1,8 @@
 #ifndef RANK_H
 #define RANK_H
 
+#include <ostream>
+
 enum Rank
 {
     TWO,
@@ -18,5 +20,7 @@ enum Rank
     ACE,
     N_RANKS
 };
+
+std::ostream &operator<<(std::ostream &os, const Rank &r);
 
 #endif

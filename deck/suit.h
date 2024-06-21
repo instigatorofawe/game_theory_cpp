@@ -1,6 +1,8 @@
 #ifndef SUIT_H
 #define SUIT_H
 
+#include <ostream>
+
 enum Suit
 {
     CLUBS,
@@ -9,5 +11,7 @@ enum Suit
     HEARTS,
     N_SUITS
 };
+
+std::ostream &operator<<(std::ostream &os, const Suit &s);
 
 #endif
