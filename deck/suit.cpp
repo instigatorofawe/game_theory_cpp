@@ -19,6 +19,7 @@ std::ostream &operator<<(std::ostream &os, const Suit &s)
     case DIAMONDS:
         os << "d";
         break;
+    default:
     }
 
     return os;

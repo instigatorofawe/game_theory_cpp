@@ -5,3 +5,5 @@ Makefile
 
 /build
 /Testing
+
+.VSCodeCounter

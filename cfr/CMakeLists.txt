@@ -1,0 +1,1 @@
+add_library(cfr cfr.h cfr.cpp)

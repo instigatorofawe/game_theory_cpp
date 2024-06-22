@@ -22,5 +22,6 @@ enum Rank
 };
 
 std::ostream &operator<<(std::ostream &os, const Rank &r);
+Rank char_to_rank(char c);
 
 #endif

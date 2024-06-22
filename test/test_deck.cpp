@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include <sstream>
 
+#include "deck/deck.h"
 #include "deck/card.h"
 #include "deck/rank.h"
 #include "deck/suit.h"
@@ -21,6 +22,13 @@ TEST(test_deck, test_rank)
     EXPECT_GT(ACE, TWO);
 }
 
+TEST(test_deck, test_rank_mapping)
+{
+    EXPECT_EQ(char_to_rank('2'), TWO);
+    EXPECT_EQ(char_to_rank('3'), THREE);
+    EXPECT_NE(char_to_rank('3'), ACE);
+}
+
 TEST(test_deck, test_suit)
 {
     EXPECT_EQ(N_SUITS, 4);
@@ -37,4 +45,41 @@ TEST(test_deck, test_card)
     EXPECT_EQ(x, Card(ACE, SPADES));
     EXPECT_NE(x, Card(ACE, HEARTS));
     EXPECT_NE(x, Card(TWO, HEARTS));
+    EXPECT_GT(x, Card(TWO, HEARTS));
+}
+
+TEST(test_deck, test_deck)
+{
+    Deck d;
+
+    EXPECT_EQ(d.size(), 0);
+
+    d.add(Card(ACE, SPADES));
+    EXPECT_EQ(d.size(), 1);
+
+    auto &x = d.get_cards();
+    EXPECT_EQ(x[0], Card(ACE, SPADES));
+    EXPECT_EQ(x.size(), 1);
+
+    d.add(Card(ACE, HEARTS));
+    EXPECT_EQ(d.size(), 2);
+
+    EXPECT_EQ(x.size(), 2);
+}
+
+TEST(test_deck, test_standard_deck)
+{
+    Deck d = Deck::standard_deck();
+
+    EXPECT_EQ(d.size(), 52);
+
+    std::cout << d;
+    std::cout << std::endl;
+
+    d.shuffle();
+
+    EXPECT_EQ(d.size(), 52);
+
+    std::cout << d;
+    std::cout << std::endl;
 }

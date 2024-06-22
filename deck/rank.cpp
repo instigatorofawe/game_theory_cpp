@@ -1,3 +1,4 @@
+#include <map>
 #include "deck/rank.h"
 
 std::ostream &operator<<(std::ostream &os, const Rank &r)
@@ -43,6 +44,27 @@ std::ostream &operator<<(std::ostream &os, const Rank &r)
     case ACE:
         os << "A";
         break;
+    default:
     }
     return os;
+}
+
+Rank char_to_rank(char c)
+{
+    static std::map<char, Rank> rank_mapping = {
+        {'2', TWO},
+        {'3', THREE},
+        {'4', FOUR},
+        {'5', FIVE},
+        {'6', SIX},
+        {'7', SEVEN},
+        {'8', EIGHT},
+        {'9', NINE},
+        {'T', TEN},
+        {'J', JACK},
+        {'Q', QUEEN},
+        {'K', KING},
+        {'A', ACE}};
+
+    return rank_mapping[c];
 }

@@ -6,6 +6,10 @@ Card::Card(Rank rank, Suit suit)
     this->suit = suit;
 }
 
+Card::Card(std::string s)
+{
+}
+
 std::ostream &operator<<(std::ostream &os, const Card &c)
 {
     os << c.rank << c.suit;
@@ -20,4 +24,14 @@ bool operator==(const Card &c, const Card &d)
 bool operator!=(const Card &c, const Card &d)
 {
     return c.rank != d.rank || c.suit != d.suit;
+}
+
+bool operator<(const Card &c, const Card &d)
+{
+    return c.rank < d.rank;
+}
+
+bool operator>(const Card &c, const Card &d)
+{
+    return c.rank > d.rank;
 }

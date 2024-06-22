@@ -1,27 +1,62 @@
-#include "deck/deck.h"
+#include <algorithm>
+#include <random>
 
-Deck::Deck()
-{
-}
+#include "deck/deck.h"
 
 Deck Deck::standard_deck()
 {
     Deck result;
+
+    for (int s = CLUBS; s < N_SUITS; s++)
+    {
+        for (int r = TWO; r < N_RANKS; r++)
+        {
+            result.add(Card(static_cast<Rank>(r), static_cast<Suit>(s)));
+        }
+    }
+
     return result;
 }
 
 void Deck::shuffle()
 {
-}
-
-Card Deck::get()
-{
+    static auto rng = std::default_random_engine();
+    std::shuffle(cards.begin(), cards.end(), rng);
 }
 
 void Deck::add(Card card)
 {
+    this->cards.insert(this->cards.end(), card);
 }
 
-int Deck::remove(Card card)
+Card Deck::draw()
 {
+    auto result = this->cards.back();
+    this->cards.pop_back();
+    return result;
+}
+
+int Deck::size() const
+{
+    return this->cards.size();
+}
+
+const std::vector<Card> &Deck::get_cards() const
+{
+    return this->cards;
+}
+
+std::vector<std::vector<Card>> Deck::enumerate_matchups(int n) const
+{
+    // TODO
+}
+
+std::ostream &operator<<(std::ostream &os, const Deck &d)
+{
+    for (const Card &c : d.get_cards())
+    {
+        os << c;
+        os << " ";
+    }
+    return os;
 }

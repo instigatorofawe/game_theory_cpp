@@ -5,4 +5,6 @@
 
 Deck kuhn_deck();
 
+std::vector<float> kuhn_payout(std::vector<Card> cards);
+
 #endif
