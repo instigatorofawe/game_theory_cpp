@@ -13,5 +13,6 @@ enum Suit
 };
 
 std::ostream &operator<<(std::ostream &os, const Suit &s);
+Suit char_to_suit(char c);
 
 #endif

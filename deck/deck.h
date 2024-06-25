@@ -16,9 +16,10 @@ public:
     void add(Card card);
     Card draw();
     int size() const;
+    bool contains(const Card &card) const;
 
     const std::vector<Card> &get_cards() const;
-    std::vector<std::vector<Card> > enumerate_matchups(int n) const;
+    std::vector<std::vector<Card>> enumerate_matchups(int n) const;
 
     friend std::ostream &operator<<(std::ostream &os, const Deck &d);
 

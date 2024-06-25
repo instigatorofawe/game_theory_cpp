@@ -34,6 +34,14 @@ TEST(test_deck, test_suit)
     EXPECT_EQ(N_SUITS, 4);
 }
 
+TEST(test_deck, test_suit_mapping)
+{
+    EXPECT_EQ(char_to_suit('c'), CLUBS);
+    EXPECT_EQ(char_to_suit('s'), SPADES);
+    EXPECT_EQ(char_to_suit('d'), DIAMONDS);
+    EXPECT_EQ(char_to_suit('h'), HEARTS);
+}
+
 TEST(test_deck, test_card)
 {
     Card x = Card(ACE, SPADES);
@@ -46,6 +54,12 @@ TEST(test_deck, test_card)
     EXPECT_NE(x, Card(ACE, HEARTS));
     EXPECT_NE(x, Card(TWO, HEARTS));
     EXPECT_GT(x, Card(TWO, HEARTS));
+}
+
+TEST(test_deck, test_card_mapping)
+{
+    Card x = Card("As");
+    EXPECT_EQ(x, Card(ACE, SPADES));
 }
 
 TEST(test_deck, test_deck)
@@ -82,4 +96,6 @@ TEST(test_deck, test_standard_deck)
 
     std::cout << d;
     std::cout << std::endl;
+
+    EXPECT_TRUE(d.contains(Card(ACE, SPADES)));
 }

@@ -41,6 +41,11 @@ int Deck::size() const
     return this->cards.size();
 }
 
+bool Deck::contains(const Card &card) const
+{
+    return std::find(cards.begin(), cards.end(), card) != cards.end();
+}
+
 const std::vector<Card> &Deck::get_cards() const
 {
     return this->cards;

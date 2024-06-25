@@ -1,0 +1,1 @@
+add_library(combinatorics combinatorics.h combinatorics.cpp)

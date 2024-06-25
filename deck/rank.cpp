@@ -45,6 +45,7 @@ std::ostream &operator<<(std::ostream &os, const Rank &r)
         os << "A";
         break;
     default:
+        break;
     }
     return os;
 }

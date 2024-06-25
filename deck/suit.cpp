@@ -1,3 +1,4 @@
+#include <map>
 #include "deck/suit.h"
 
 std::ostream &operator<<(std::ostream &os, const Suit &s)
@@ -20,7 +21,19 @@ std::ostream &operator<<(std::ostream &os, const Suit &s)
         os << "d";
         break;
     default:
+        break;
     }
 
     return os;
+}
+
+Suit char_to_suit(char c)
+{
+    static std::map<char, Suit> suit_mapping = {
+        {'c', CLUBS},
+        {'s', SPADES},
+        {'h', HEARTS},
+        {'d', DIAMONDS}};
+
+    return suit_mapping[c];
 }
